@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Mafer 💙</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom, #a3d5f7, #ffffff);
+      text-align: center;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 2rem;
+      margin: 5vh auto;
+      border-radius: 20px;
+      max-width: 700px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #2d6a91;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    audio {
+      margin-top: 1rem;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 10px;
+    }
+
+    .image-wrapper {
+      perspective: 1000px;
+      margin-top: 2rem;
+    }
+
+    .tilt-image {
+      width: 300px;
+      border-radius: 15px;
+      transition: transform 0.2s ease;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .sticker {
+      position: absolute;
+      width: 60px;
+      animation: float 10s infinite linear;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+      }
+
+      100% {
+        transform: translateY(-120vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Contenido principal -->
+  <div class="container">
+    <h1>Feliz cumpleaños, Mafer 🌸</h1>
+    <p>
+      A veces pienso que no sabes lo especial que eres.
+      Que no te das cuenta de lo fuerte que has sido, ni del alivio que causas cuando sonríes.
+      Que no ves lo valiente que ha sido tu corazón… incluso cuando tiembla.
+    </p>
+    <p>
+      Hermosa, no vine a cambiarte. Vine a verte. A cuidarte.
+      A estar en tu cielo despejado y también en tu tormenta.
+      A recordarte que no tienes que ser perfecta para ser amada.
+    </p>
+    <p>
+      Si alguna vez te sientes sola, vuelve a este rinconcito.
+      Aquí está mi voz… y mi promesa:
+      seguir estando, incluso en los silencios.
+    </p>
+
+
+    <audio controls autoplay>
+      <source src="Audio mafer.m4a" type="audio/mpeg" />
+      Tu navegador no soporta audio.
+    </audio>
+
+    <div class="image-wrapper" id="tiltWrapper">
+      <img src="https://i.pinimg.com/736x/bd/72/00/bd72001e5922879ea6f4110b271ff3b8.jpg" alt="Imagen de Mafer"
+        class="tilt-image" id="tiltImage" />
+    </div>
+    <p style="margin-top: 1.5rem;">Hecho con memoria, calma y cariño. – O</p>
+  </div>
+
+  <!-- Efecto 3D imagen -->
+  <script>
+    const image = document.getElementById('tiltImage');
+    const wrapper = document.getElementById('tiltWrapper');
+
+    wrapper.addEventListener('mousemove', (e) => {
+      const rect = wrapper.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -10;
+      const rotateY = ((x - centerX) / centerX) * 10;
+
+      image.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+      image.style.transform = 'rotateX(0) rotateY(0)';
+    });
+  </script>
+</body>
+
+</html>
